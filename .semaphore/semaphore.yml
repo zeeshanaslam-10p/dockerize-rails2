@@ -14,7 +14,7 @@ blocks:
             - sudo pip install awscli
             - aws ecr get-login --no-include-email | bash
             - 'docker pull "${ECR_REGISTRY}:latest" || true'
-            - 'docker build -t "${ECR_REGISTRY}:${SEMAPHORE_WORKFLOW_ID}" --cache-from "${ECR_REGISTRY}:latest" -f Dockerfile.production .'
+            - 'docker build -t "${ECR_REGISTRY}:${SEMAPHORE_WORKFLOW_ID}" --cache-from "${ECR_REGISTRY}:latest" -f Dockerfile .'
             - docker images
             - 'docker push "${ECR_REGISTRY}:${SEMAPHORE_WORKFLOW_ID}"'
       secrets:
